@@ -361,7 +361,9 @@
                 data: data,
             });
             
-            ev.path[0].disabled = true;
+            if (ev.target) {
+                ev.target.disabled = true;
+            }
             
             httpRequest.then(function successCallback(response) {
                 if (response.data.error == 0) {
@@ -369,7 +371,9 @@
                 } else {
                     $scope.showAlert(event, 'Commission', 'failed');
                 }
-                ev.path[0].disabled = false;
+                if (ev.target) {
+                    ev.target.disabled = false;
+                }
             });
         };
     };
